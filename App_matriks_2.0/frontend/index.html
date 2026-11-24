@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b1220">
+    <meta name="description" content="App Matriks 2.0 - Aplikasi pembelajaran dan kalkulator matriks.">
+
+    <title>App Matriks 2.0</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="brand">
+            <div class="logo">M</div>
+            <div>
+                <h2>App Matriks <span>2.0</span></h2>
+                <small>Matrix Learning Workspace</small>
+            </div>
+        </div>
+
+        <div class="navbar-actions">
+            <button id="themeToggle">☀ Light Mode</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- HALAMAN 1: INTRO -->
+        <section id="introPage" class="app-page intro-page">
+            <div class="intro-content">
+
+                <div class="intro-badge">
+                    MATRIX LEARNING PLATFORM
+                </div>
+
+                <div class="intro-logo">M</div>
+
+                <h1>
+                    Explore the World of
+                    <span>Matrix</span>
+                </h1>
+
+                <p>
+                    Pelajari dan selesaikan berbagai persoalan matriks
+                    melalui perhitungan otomatis, metode matematis,
+                    dan langkah penyelesaian yang terstruktur.
+                </p>
+
+                <button
+                    id="startButton"
+                    class="primary-button intro-button"
+                >
+                    Mulai Sekarang →
+                </button>
+
+                <div class="intro-footer">
+                    Learn · Calculate · Understand
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- HALAMAN 2: PILIH MATERI -->
+        <section id="materialPage" class="app-page" hidden>
+
+            <div class="page-heading">
+                <p>LEARNING MATERIAL</p>
+                <h1>Pilih <span>Materi</span></h1>
+                <p>
+                    Pilih materi matematika yang ingin kamu pelajari.
+                </p>
+            </div>
+
+            <div class="material-grid">
+
+                <button
+                    class="material-card active-card"
+                    id="matrixMaterial"
+                >
+                    <div class="material-icon">▦</div>
+
+                    <div class="material-info">
+                        <h2>Matriks</h2>
+                        <p>
+                            Pelajari operasi dan berbagai metode
+                            penyelesaian matriks.
+                        </p>
+                    </div>
+
+                    <span class="available-label">
+                        Tersedia →
+                    </span>
+                </button>
+
+            </div>
+
+            <button
+                class="secondary-button back-button"
+                id="backToIntro"
+            >
+                ← Kembali
+            </button>
+
+        </section>
+
+
+        <!-- HALAMAN 3: PILIH METODE -->
+        <section id="methodPage" class="app-page" hidden>
+
+            <div class="page-heading">
+                <p>MATRIX WORKSPACE</p>
+                <h1>Materi <span>Matriks</span></h1>
+                <p>
+                    Pilih operasi atau metode perhitungan
+                    yang ingin kamu gunakan.
+                </p>
+            </div>
+
+            <div class="method-grid">
+
+                <button class="method-card" disabled>
+                    <div class="method-icon">＋</div>
+                    <h3>Operasi Matriks</h3>
+                    <p>Penjumlahan, pengurangan, dan perkalian.</p>
+                    <span>Segera Hadir</span>
+                </button>
+
+                <button class="method-card" disabled>
+                    <div class="method-icon">A⁻¹</div>
+                    <h3>Invers Matriks</h3>
+                    <p>Mencari invers dari suatu matriks persegi.</p>
+                    <span>Segera Hadir</span>
+                </button>
+
+                <button
+                    class="method-card active-card"
+                    id="obeMethod"
+                    data-method="obe"
+                >
+                    <div class="method-icon">▤</div>
+                    <h3>Operasi Baris Elementer</h3>
+                    <p>Eliminasi Gauss-Jordan dan bentuk RREF.</p>
+                    <span class="available-label">Tersedia →</span>
+                </button>
+
+                <button class="method-card" disabled>
+                    <div class="method-icon">C</div>
+                    <h3>Metode Cramer</h3>
+                    <p>Menyelesaikan sistem persamaan linear.</p>
+                    <span>Segera Hadir</span>
+                </button>
+
+                <button class="method-card" disabled>
+                    <div class="method-icon">|A|</div>
+                    <h3>Determinan</h3>
+                    <p>Menghitung nilai determinan matriks.</p>
+                    <span>Segera Hadir</span>
+                </button>
+
+                <button class="method-card" disabled>
+                    <div class="method-icon">Aᵀ</div>
+                    <h3>Transpose</h3>
+                    <p>Mengubah baris menjadi kolom.</p>
+                    <span>Segera Hadir</span>
+                </button>
+
+            </div>
+
+            <button
+                class="secondary-button back-button"
+                id="backToMaterial"
+            >
+                ← Kembali ke Materi
+            </button>
+
+        </section>
+
+
+        <!-- HALAMAN 4: PILIH JENIS OBE -->
+        <section id="obeChoicePage" class="app-page" hidden>
+
+            <div class="page-heading">
+                <p>OPERASI BARIS ELEMENTER</p>
+                <h1>Pilih <span>Jenis OBE</span></h1>
+                <p>Pilih jenis input yang ingin kamu gunakan.</p>
+            </div>
+
+            <div class="method-grid">
+
+                <button
+                    class="method-card active-card"
+                    id="obeMatrixChoice"
+                >
+                    <div class="method-icon">▦</div>
+                    <h3>OBE Matriks</h3>
+                    <p>
+                        Masukkan matriks augmented atau matriks biasa
+                        secara langsung.
+                    </p>
+                    <span class="available-label">Mulai →</span>
+                </button>
+
+                <button
+                    class="method-card active-card"
+                    id="obeEquationChoice"
+                >
+                    <div class="method-icon">ƒ(x)</div>
+                    <h3>OBE Persamaan</h3>
+                    <p>
+                        Masukkan sistem persamaan linear dan ubah
+                        otomatis menjadi matriks augmented.
+                    </p>
+                    <span class="available-label">Mulai →</span>
+                </button>
+
+            </div>
+
+            <button
+                class="secondary-button back-button"
+                id="backToMethodFromObe"
+            >
+                ← Kembali ke Metode
+            </button>
+
+        </section>
+
+
+        <!-- HALAMAN 5: OBE PERSAMAAN -->
+        <section id="equationPage" class="app-page" hidden>
+
+            <div class="page-heading">
+                <p>OBE EQUATION SOLVER</p>
+                <h1>Sistem <span>Persamaan Linear</span></h1>
+                <p>
+                    Masukkan setiap persamaan dalam bentuk linear,
+                    misalnya 2x + y = 5.
+                </p>
+            </div>
+
+            <button
+                class="secondary-button back-button"
+                id="backToObeChoice"
+            >
+                ← Kembali ke Pilihan OBE
+            </button>
+
+            <div class="workspace">
+
+                <section class="card">
+
+                    <h2>Input Persamaan</h2>
+                    <p class="description">
+                        Gunakan satu baris untuk setiap persamaan.
+                    </p>
+
+                    <div class="size-control">
+
+                        <div>
+                            <label for="equationCount">
+                                Jumlah persamaan
+                            </label>
+
+                            <input
+                                type="number"
+                                id="equationCount"
+                                min="1"
+                                max="10"
+                                value="2"
+                            >
+                        </div>
+
+                        <button id="applyEquationCount">
+                            Terapkan
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="equationInputs"
+                        style="display:grid; gap:12px; margin:18px 0;"
+                    ></div>
+
+                    <div class="button-group">
+
+                        <button
+                            id="clearEquations"
+                            class="secondary-button"
+                        >
+                            Bersihkan
+                        </button>
+
+                        <button
+                            id="solveEquations"
+                            class="primary-button"
+                        >
+                            Selesaikan →
+                        </button>
+
+                    </div>
+
+                    <p id="equationError" role="alert"></p>
+
+                </section>
+
+
+                <section class="card">
+
+                    <h2>Hasil Penyelesaian</h2>
+
+                    <p class="description">
+                        Matriks augmented, hasil RREF, dan langkah
+                        OBE akan muncul di sini.
+                    </p>
+
+                    <div id="equationEmptyState">
+
+                        <div class="empty-icon">∑</div>
+
+                        <h3>Belum ada hasil</h3>
+
+                        <p>
+                            Masukkan persamaan lalu tekan Selesaikan.
+                        </p>
+
+                    </div>
+
+                    <div id="equationResultContent" hidden>
+
+                        <h3>Matriks Augmented</h3>
+                        <div
+                            id="equationInitialMatrix"
+                            class="matrix-container"
+                        ></div>
+
+                        <hr>
+
+                        <h3>Hasil RREF</h3>
+                        <div
+                            id="equationResultMatrix"
+                            class="matrix-container"
+                        ></div>
+
+                        <div
+                            id="equationSolution"
+                            style="margin-top:16px;"
+                        ></div>
+
+                        <hr>
+
+                        <h3>Langkah Pengerjaan</h3>
+                        <div id="equationStepsList"></div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+
+        <!-- HALAMAN 6: KALKULATOR OBE MATRIKS -->
+        <section id="calculatorPage" class="app-page" hidden>
+
+            <div class="page-heading">
+                <p>MATRIX CALCULATOR</p>
+                <h1>Eliminasi <span>Gauss-Jordan</span></h1>
+                <p>
+                    Masukkan elemen matriks dan lihat
+                    langkah penyelesaian secara lengkap.
+                </p>
+            </div>
+
+            <button
+                class="secondary-button back-button"
+                id="backToMethod"
+            >
+                ← Kembali ke Metode
+            </button>
+
+            <div class="workspace">
+
+                <!-- PANEL INPUT -->
+                <section class="card">
+
+                    <h2>Input Matriks</h2>
+                    <p class="description">
+                        Masukkan ukuran dan elemen matriks.
+                    </p>
+
+                    <div class="size-control">
+
+                        <div>
+                            <label for="rows">Baris</label>
+                            <input
+                                type="number"
+                                id="rows"
+                                value="2"
+                                min="1"
+                            >
+                        </div>
+
+                        <span>×</span>
+
+                        <div>
+                            <label for="cols">Kolom</label>
+                            <input
+                                type="number"
+                                id="cols"
+                                value="3"
+                                min="1"
+                            >
+                        </div>
+
+                        <button id="applySize">
+                            Terapkan
+                        </button>
+
+                    </div>
+
+                    <h3>Matriks A</h3>
+
+                    <div class="matrix-container">
+                        <div id="matrixGrid"></div>
+                    </div>
+
+                    <div class="operation">
+
+                        <label for="operation">
+                            Metode perhitungan
+                        </label>
+
+                        <select id="operation">
+                            <option value="rref">
+                                Eliminasi Gauss-Jordan (OBE)
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="button-group">
+
+                        <button
+                            id="clearButton"
+                            class="secondary-button"
+                        >
+                            Bersihkan
+                        </button>
+
+                        <button
+                            id="solveButton"
+                            class="primary-button"
+                        >
+                            Hitung Matriks →
+                        </button>
+
+                    </div>
+
+                    <p id="errorMessage"></p>
+
+                </section>
+
+
+                <!-- PANEL HASIL -->
+                <section class="card">
+
+                    <h2>Hasil Perhitungan</h2>
+
+                    <p class="description">
+                        Hasil dan langkah penyelesaian
+                        akan ditampilkan di sini.
+                    </p>
+
+                    <div id="emptyState">
+
+                        <div class="empty-icon">∑</div>
+
+                        <h3>Belum ada hasil</h3>
+
+                        <p>
+                            Masukkan matriks dan tekan
+                            tombol Hitung Matriks.
+                        </p>
+
+                    </div>
+
+                    <div id="resultContent" hidden>
+
+                        <h3>Hasil RREF</h3>
+                        <div id="resultMatrix"></div>
+
+                        <hr>
+
+                        <h3>Langkah Pengerjaan</h3>
+                        <div id="stepsList"></div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        App Matriks 2.0 · Powered by Python
+    </footer>
+
+</body>
+</html>
